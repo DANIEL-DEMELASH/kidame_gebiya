@@ -41,6 +41,10 @@ dependencies:
   flutter_bloc: ^9.0.0
   shared_preferences: ^2.3.5
   flutter_native_splash: ^2.4.4
+  dio: ^5.7.0
+  logger: ^2.5.0
+  pretty_dio_logger: ^1.4.0
+  get_it: ^8.0.3
 
 flutter_native_splash:
   color: "#FFFFFF"
