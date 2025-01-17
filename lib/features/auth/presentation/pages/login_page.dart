@@ -1,0 +1,173 @@
+import 'package:feather_icons/feather_icons.dart';
+import 'package:flutter/material.dart';
+import 'package:kidame_gebiya/app_constant.dart';
+
+class LoginPage extends StatefulWidget {
+  const LoginPage({super.key});
+
+  @override
+  State<LoginPage> createState() => _LoginPageState();
+}
+
+class _LoginPageState extends State<LoginPage> {
+  final _formKey = GlobalKey<FormState>();
+  bool isPasswordHidden = true;
+  
+  final usernameController = TextEditingController();
+  final passwordController = TextEditingController();
+  
+  @override
+  void dispose() {
+    usernameController.clear();
+    passwordController.clear();
+    super.dispose();
+  }
+  
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      resizeToAvoidBottomInset: true,
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.only(left: 16, right: 16, top: 80),
+          child: Form(
+            key: _formKey,
+            child: Column(
+              children: [
+                Image.asset('assets/images/logo.png', width: 200,),
+                
+                const SizedBox(height: 50),
+                
+                const Text('Welcome Back!',
+                  style: TextStyle(
+                    fontWeight: FontWeight.w500,
+                    fontSize: 24,
+                  ),
+                ),
+                
+                const SizedBox(height: 30),
+                
+                TextFormField(
+                  controller: usernameController,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: greyColor),
+                      borderRadius: BorderRadius.circular(8)
+                    ),
+                    focusedBorder:  OutlineInputBorder(
+                      borderSide: const BorderSide(color: greyColor),
+                      borderRadius: BorderRadius.circular(8)
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.circular(8)
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(color: greyColor),
+                      borderRadius: BorderRadius.circular(8)
+                    ),
+                    prefixIcon: const Icon(FeatherIcons.user, size: 28, color: darkGreyColor,),
+                    hintText: 'Username',
+                    hintStyle: const TextStyle(
+                      fontSize: 16
+                    ),
+                    labelStyle: const TextStyle(
+                      fontSize: 16
+                    ), 
+                  ),
+                  validator: (value) {
+                    if(value == null || value == ''){
+                      return 'username can\'t be empty';
+                    }
+                    
+                    if(value.trim().length < 3){
+                      return 'username must be at least 3 characters';
+                    }
+                    
+                    return null;
+                  },
+                ),
+                
+                const SizedBox(height: 20),
+                
+                TextFormField(
+                  controller: passwordController,
+                  obscureText: isPasswordHidden,
+                  decoration: InputDecoration(
+                    enabledBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: greyColor),
+                      borderRadius: BorderRadius.circular(8)
+                    ),
+                    focusedBorder:  OutlineInputBorder(
+                      borderSide: const BorderSide(color: greyColor),
+                      borderRadius: BorderRadius.circular(8)
+                    ),
+                    errorBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(color: Colors.red),
+                      borderRadius: BorderRadius.circular(8)
+                    ),
+                    border: OutlineInputBorder(
+                      borderSide: const BorderSide(color: greyColor),
+                      borderRadius: BorderRadius.circular(8)
+                    ),
+                    prefixIcon: const Icon(Icons.lock_outlined, size: 28, color: darkGreyColor,),
+                    hintText: 'Password',
+                    hintStyle: const TextStyle(
+                      fontSize: 16
+                    ),
+                    labelStyle: const TextStyle(
+                      fontSize: 16
+                    ), 
+                    suffixIcon: IconButton(
+                      onPressed: (){
+                        setState(() {
+                          isPasswordHidden = !isPasswordHidden;
+                        });
+                      }, 
+                      icon: Icon(isPasswordHidden ? FeatherIcons.eyeOff : FeatherIcons.eye, 
+                        color: darkGreyColor,))
+                  ),
+                  validator: (value) {
+                    if(value == null || value == ''){
+                      return 'password can\'t be empty';
+                    }
+                    
+                    if(value.trim().length < 6){
+                      return 'password must be at least 6 characters';
+                    }
+                    
+                    return null;
+                  },
+                ),
+                
+                const SizedBox(height: 40),
+                
+                SizedBox(
+                  width: double.infinity,
+                  child: TextButton(
+                    onPressed: (){
+                      if(_formKey.currentState!.validate()){
+                        //TODO: implement login request and redirect the screen
+                      }
+                    }, 
+                    style: TextButton.styleFrom(
+                      backgroundColor: primaryColor,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(8)
+                      )
+                    ),
+                    child: const Text('Login', 
+                      style: TextStyle(
+                        fontWeight: FontWeight.w500, 
+                        fontSize: 20, 
+                        color: Colors.white),)
+                  ),
+                )
+              ],
+            ),
+          ),
+        ),
+      ),
+    );
+  }
+}
