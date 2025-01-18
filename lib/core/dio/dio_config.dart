@@ -4,4 +4,5 @@ class DioConfig {
   static const int receiveTimeout = 3; // 3 seconds
   static const int sendTimeout = 5; // 5 seconds
   
+  static const String login = 'auth/login';
 }
