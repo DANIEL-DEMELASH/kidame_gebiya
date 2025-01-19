@@ -37,11 +37,7 @@ String getErrorMessage(DioException err) {
         break;
         
       default:
-        if(err.response?.statusCode == 401){
-          message = err.response?.data; 
-        }else{
-          message = 'Something went wrong. Please try again.';  
-        }
+        message = 'Something went wrong. Please try again.';  
         break;
     }
     

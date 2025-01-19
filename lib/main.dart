@@ -1,12 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+
 import 'package:kidame_gebiya/core/locator/locator.dart';
 import 'package:kidame_gebiya/features/auth/bloc/auth_cubit.dart';
-import 'package:kidame_gebiya/features/auth/presentation/pages/login_page.dart';
+// import 'package:kidame_gebiya/features/auth/presentation/pages/login_page.dart';
+import 'package:kidame_gebiya/features/home/presentation/pages/home_page.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   setupLocator();
+  SystemChrome.setSystemUIOverlayStyle(
+    const SystemUiOverlayStyle(
+      statusBarColor: Colors.white,
+      statusBarBrightness: Brightness.light,
+      statusBarIconBrightness: Brightness.dark
+    )
+  );
   runApp(
     BlocProvider(
       create: (context) => AuthCubit(),
@@ -26,7 +36,7 @@ class MyApp extends StatelessWidget {
         scaffoldBackgroundColor: Colors.white,
         fontFamily: 'Poppins'
       ),
-      home: const LoginPage(),
+      home: const HomePage(),
     );
   }
 }
