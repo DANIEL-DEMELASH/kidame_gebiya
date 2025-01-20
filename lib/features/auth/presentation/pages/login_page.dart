@@ -1,10 +1,12 @@
 import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:kidame_gebiya/app_constant.dart';
 import 'package:kidame_gebiya/features/auth/bloc/auth_cubit.dart';
 import 'package:kidame_gebiya/features/auth/bloc/auth_state.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -32,25 +34,23 @@ class _LoginPageState extends State<LoginPage> {
     return Scaffold(
       resizeToAvoidBottomInset: true,
       body: BlocListener<AuthCubit, AuthState>(
-        listener: (context, state) {
-          if(state is AuthSuccessful){
-            Navigator.push(context, 
-              MaterialPageRoute(builder: (context) => 
-                Scaffold(body: Center(child: ElevatedButton(onPressed: () async{
-                  SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-                  sharedPreferences.clear();
-                  if(context.mounted) {
-                    Navigator.pushReplacement(context, MaterialPageRoute(builder: (contex) => const LoginPage()));
-                  }
-                }, child: const Text('Logout'))),)));
+        listener: (context, state) async{
+          if(state is AuthSuccessful) {
+            SharedPreferences preferences = await SharedPreferences.getInstance();
+            preferences.setBool('isLoggedIn', true);
+            if(context.mounted) {
+              context.go('/homepage');
+            }
           }
           
           if(state is AuthError){
-            ScaffoldMessenger.of(context).showSnackBar(
+            if(context.mounted) {
+              ScaffoldMessenger.of(context).showSnackBar(
               SnackBar(
                 content: Text(state.error, 
                   style: const TextStyle(color: Colors.red),), 
                 backgroundColor: Colors.white,));
+            }
           }
         },
         
