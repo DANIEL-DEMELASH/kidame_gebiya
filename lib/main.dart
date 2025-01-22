@@ -15,7 +15,8 @@ void main() async{
     const SystemUiOverlayStyle(
       statusBarColor: Colors.white,
       statusBarBrightness: Brightness.dark,
-      statusBarIconBrightness: Brightness.dark
+      statusBarIconBrightness: Brightness.dark,
+      systemNavigationBarColor: Color.fromARGB(255, 0, 52, 83)
     )
   );
   runApp(

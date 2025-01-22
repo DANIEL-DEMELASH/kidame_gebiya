@@ -39,7 +39,7 @@ class _LoginPageState extends State<LoginPage> {
             SharedPreferences preferences = await SharedPreferences.getInstance();
             preferences.setBool('isLoggedIn', true);
             if(context.mounted) {
-              context.go('/homepage');
+              context.go('/bottom-navigation');
             }
           }
           
