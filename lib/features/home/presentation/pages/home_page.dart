@@ -86,7 +86,6 @@ class HomePage extends StatelessWidget {
                     }
                     
                     if(state is CategoryLoaded){
-                      
                       return Column(
                         children: [
                           Container(
@@ -109,7 +108,7 @@ class HomePage extends StatelessWidget {
                                       style: TextButton.styleFrom(
                                         backgroundColor: primaryColor,
                                         
-                                        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 4),
+                                        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
                                         shape: RoundedRectangleBorder(
                                           borderRadius: BorderRadius.circular(0)
                                         )

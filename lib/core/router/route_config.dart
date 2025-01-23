@@ -28,6 +28,11 @@ class RouteConfig {
         ),
         
         GoRoute(
+          path: '/bottom-navigation',
+          builder: (context, state) => const BottomNavigation(),
+        ),
+        
+        GoRoute(
           path: '/login',
           builder: (context, state) => const LoginPage(),
         ),
