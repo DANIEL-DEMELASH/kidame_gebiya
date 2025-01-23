@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kidame_gebiya/features/category/presentation/pages/category_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:kidame_gebiya/features/auth/presentation/pages/login_page.dart';
@@ -35,6 +36,11 @@ class RouteConfig {
         GoRoute(
           path: '/login',
           builder: (context, state) => const LoginPage(),
+        ),
+        
+         GoRoute(
+          path: '/categories',
+          builder: (context, state) => const CategoryPage(),
         ),
         
         GoRoute(

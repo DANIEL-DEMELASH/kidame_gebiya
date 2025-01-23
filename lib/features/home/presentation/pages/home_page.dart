@@ -131,7 +131,7 @@ class HomePage extends StatelessWidget {
                                 
                                 TextButton(
                                   onPressed: (){
-                                    
+                                    context.push('/categories');
                                   }, 
                                   child: const Text('See All', style: TextStyle(color: darkGreyColor),))
                               ],
@@ -237,7 +237,7 @@ class HomePage extends StatelessWidget {
                       ],
                       );
                     }
-                    return Container();
+                    return const SizedBox();
                 })
               ],
             ),
