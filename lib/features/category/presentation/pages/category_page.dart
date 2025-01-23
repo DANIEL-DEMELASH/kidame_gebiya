@@ -21,6 +21,7 @@ class CategoryPage extends StatelessWidget {
         title:const Text('Categories', style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),),
         centerTitle: true,
       ),
+      
       body: BlocBuilder<CategoryBloc, CategoryState>(
         builder: (context, state){
           if(state is CategoryError){

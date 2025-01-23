@@ -202,18 +202,18 @@ class HomePage extends StatelessWidget {
                     if(state is SampleProductLoaded) {
                       return Column(
                         children: [
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 8),
+                          const Padding(
+                            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                const Text('Curated For You', style: TextStyle(fontWeight: FontWeight.w500),),
+                                Text('Curated For You', style: TextStyle(fontWeight: FontWeight.w500),),
                                 
-                                TextButton(
-                                  onPressed: (){
+                                // TextButton(
+                                //   onPressed: (){
                                     
-                                  }, 
-                                  child: const Text('See All', style: TextStyle(color: darkGreyColor),))
+                                //   }, 
+                                //   child: const Text('See All', style: TextStyle(color: darkGreyColor),))
                               ],
                             ),
                           ),

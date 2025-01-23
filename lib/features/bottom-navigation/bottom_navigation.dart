@@ -2,6 +2,7 @@ import 'package:feather_icons/feather_icons.dart';
 import 'package:flutter/material.dart';
 import 'package:kidame_gebiya/app_constant.dart';
 import 'package:kidame_gebiya/features/home/presentation/pages/home_page.dart';
+import 'package:kidame_gebiya/features/product/presentation/pages/products_page.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -13,7 +14,7 @@ class BottomNavigation extends StatefulWidget {
 class _BottomNavigationState extends State<BottomNavigation> {
   final List<Widget> _screens = <Widget>[
     const HomePage(),
-    const Scaffold(),
+    const ProductsPage(),
     const Scaffold(),
     const Scaffold(),
   ];
