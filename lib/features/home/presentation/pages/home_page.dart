@@ -228,7 +228,7 @@ class HomePage extends StatelessWidget {
                             itemCount: state.products.length,
                             itemBuilder: (context, index) {
                               return GestureDetector(
-                                onTap: () => context.push('/homepage/product_detail'),
+                                onTap: () => context.push('/homepage/product_detail', extra: state.products[index]),
                                 child: ProductCard(currentProduct: state.products[index]));
                             },
                           ),

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidame_gebiya/features/category/presentation/pages/category_page.dart';
+import 'package:kidame_gebiya/features/product/data/models/product_model.dart';
+import 'package:kidame_gebiya/features/product/presentation/pages/product_detail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:kidame_gebiya/features/auth/presentation/pages/login_page.dart';
@@ -49,7 +51,13 @@ class RouteConfig {
           routes: [
             GoRoute(
               path: '/product_detail',
-              builder: (context, state) => Scaffold(body: Center(child: ElevatedButton(onPressed: () => context.pop(), child: const Text('Product Detail')),),),
+              builder: (context, state) {
+                final product = state.extra as ProductModel?;
+                if(product == null){
+                  return const Scaffold(body: Center(child: Text('Invalid product'),));
+                }
+                return ProductDetail(product: product);
+              }
             )
           ]
         )
