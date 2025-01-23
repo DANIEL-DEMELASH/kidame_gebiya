@@ -5,6 +5,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:kidame_gebiya/core/locator/locator.dart';
 import 'package:kidame_gebiya/core/router/route_config.dart';
 import 'package:kidame_gebiya/features/auth/bloc/auth_cubit.dart';
+import 'package:kidame_gebiya/features/category/bloc/category_bloc.dart';
+import 'package:kidame_gebiya/features/category/bloc/category_event.dart';
+import 'package:kidame_gebiya/features/home/bloc/sample_product/sample_product_bloc.dart';
+import 'package:kidame_gebiya/features/home/bloc/sample_product/sample_product_event.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async{
@@ -20,8 +24,12 @@ void main() async{
     )
   );
   runApp(
-    BlocProvider(
-      create: (context) => AuthCubit(),
+    MultiBlocProvider(
+      providers: [
+        BlocProvider(create: (context) => AuthCubit()),
+        BlocProvider(create: (context) => SampleProductBloc()..add(FetchProducts())),
+        BlocProvider(create: (context) => CategoryBloc()..add(FetchCategories()))
+      ],
       child: MyApp(preferences: prefs))
   );
 }

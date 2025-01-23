@@ -5,4 +5,6 @@ class DioConfig {
   static const int sendTimeout = 5; // 5 seconds
   
   static const String login = 'auth/login';
+  static const String allProducts = 'products';
+  static const String categories = 'products/categories';
 }

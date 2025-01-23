@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:kidame_gebiya/features/auth/presentation/pages/login_page.dart';
 import 'package:kidame_gebiya/features/bottom-navigation/bottom_navigation.dart';
 import 'package:kidame_gebiya/features/home/presentation/pages/home_page.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 class RouteConfig {
   static String initialLocation = '/';
@@ -21,7 +22,7 @@ class RouteConfig {
             if(prefs.getBool('isLoggedIn') == null || prefs.getBool('isLoggedIn') == false){
               return const LoginPage();
             }else{
-              return BottomNavigation();
+              return const BottomNavigation();
             }
           },
         ),
