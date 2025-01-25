@@ -19,4 +19,19 @@ class ProductRepository {
       throw Exception('Error loading products ${response.statusCode} ${response.statusMessage}');
     }
   }
+  
+  Future<List<ProductModel>> getProductsByCategory (String productCategory) async {
+    final response = await dioClient.client.get("${DioConfig.productByCategory}/$productCategory");
+    
+    if(response.statusCode == 200 || response.statusCode == 201){
+      final List<dynamic> fetchedProducts = (response.data) as List<dynamic>;
+      final List<ProductModel> productList = fetchedProducts.map((productData) =>
+                ProductModel.fromJson(productData as Map<String, dynamic>)).toList();
+      return productList;
+    }else{
+      throw Exception('Error loading products ${response.statusCode} ${response.statusMessage}');
+    }
+  }
+  
+  
 }

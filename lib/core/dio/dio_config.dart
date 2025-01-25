@@ -7,4 +7,5 @@ class DioConfig {
   static const String login = 'auth/login';
   static const String allProducts = 'products';
   static const String categories = 'products/categories';
+  static const String productByCategory = 'products/category';
 }

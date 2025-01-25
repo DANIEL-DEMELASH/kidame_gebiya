@@ -9,8 +9,8 @@ import 'package:kidame_gebiya/features/category/bloc/category_bloc.dart';
 import 'package:kidame_gebiya/features/category/bloc/category_event.dart';
 import 'package:kidame_gebiya/features/home/bloc/sample_product/sample_product_bloc.dart';
 import 'package:kidame_gebiya/features/home/bloc/sample_product/sample_product_event.dart';
-import 'package:kidame_gebiya/features/product/bloc/products_bloc.dart';
-import 'package:kidame_gebiya/features/product/bloc/products_event.dart';
+import 'package:kidame_gebiya/features/product/bloc/all_products/products_bloc.dart';
+import 'package:kidame_gebiya/features/product/bloc/all_products/products_event.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 void main() async{

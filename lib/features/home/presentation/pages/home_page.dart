@@ -53,194 +53,186 @@ class HomePage extends StatelessWidget {
           ],
         ),
         
-        body: RefreshIndicator(
-          onRefresh: () async {
-            context.read<SampleProductBloc>().add(FetchProducts());
-            context.read<CategoryBloc>().add(FetchCategories());
-          },
-          child: SingleChildScrollView(
-            child: Column(
-              children: [
-                
-                BlocBuilder<CategoryBloc, CategoryState>(
-                  builder: (context, state){
-                    if(state is CategoryError){
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(state.error, textAlign: TextAlign.center,),
-                          
-                          const SizedBox(height: 20),
-                          
-                          IconButton(
-                            onPressed: (){
-                              context.read<CategoryBloc>().add(FetchCategories());
-                            }, 
-                            icon: const Icon(Icons.refresh, size: 30,))
-                        ],
-                      );
-                    }
-                    
-                    if(state is CategoryLoading){
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                    
-                    if(state is CategoryLoaded){
-                      return Column(
-                        children: [
-                          Container(
-                            margin: const EdgeInsets.only(top: 12),
-                            padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
-                            color: primaryColor.withOpacity(.2),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                Wrap(
-                                  direction: Axis.vertical,
-                                  spacing: 12,
-                                  children: [
-                                    const Text('NEW COLLECTIONS', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
-                                    
-                                    const Text('20% OFF', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
-                                    
-                                    TextButton(
-                                      onPressed: (){}, 
-                                      style: TextButton.styleFrom(
-                                        backgroundColor: primaryColor,
-                                        
-                                        padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(0)
-                                        )
-                                      ),
-                                      child: const Text('SHOP NOW', style: TextStyle(color: Colors.white),))
-                                  ],
-                                ),
-                                
-                                Image.asset('assets/images/calvin_girl.png', width: 130,)
-                              ],
-                            ),
-                          ),
-                          
-                          Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                const Text('Shop By Category', style: TextStyle(fontWeight: FontWeight.w500),),
-                                
-                                TextButton(
-                                  onPressed: (){
-                                    context.push('/categories');
-                                  }, 
-                                  child: const Text('See All', style: TextStyle(color: darkGreyColor),))
-                              ],
-                            ),
-                          ),
-                          
-                          Container(
-                            height: 35,
-                            padding: const EdgeInsets.symmetric(horizontal: 8),
-                            child: ListView.separated(
-                              scrollDirection: Axis.horizontal,
-                              itemCount: state.categories.length,
-                              separatorBuilder: (context, index) {
-                                return const SizedBox(
-                                  width: 12,
-                                );
-                              },
-                              itemBuilder: (context, index){
-                                return TextButton(
-                                  onPressed: (){
-                                    
-                                  }, 
-                                  style: TextButton.styleFrom(
-                                    backgroundColor: primaryColor.withOpacity(.3),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(25)
-                                    ),
-                                    padding: const EdgeInsets.symmetric(horizontal: 16)
-                                  ),
-                                  child: Text(state.categories[index], 
-                                    style: const TextStyle(color: Colors.black,  fontWeight: FontWeight.w500)
-                                  )
-                                );
-                              }
-                            ),
-                          ),
-                        ],
-                      );
-                    }
-                    
-                    return const SizedBox();
-                  } 
-                ),
-                      
-                BlocBuilder<SampleProductBloc, SampleProductState>(
-                  builder: (context, state) {
-                    if(state is SampleProductError){
-                      return Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Text(state.error, textAlign: TextAlign.center,),
-                          
-                          const SizedBox(height: 20),
-                          
-                          IconButton(
-                            onPressed: (){
-                              context.read<SampleProductBloc>().add(FetchProducts());
-                            }, 
-                            icon: const Icon(Icons.refresh, size: 30,))
-                        ],
-                      );
-                    }
-                    
-                    if(state is SampleProductLoading){
-                      return const Center(child: CircularProgressIndicator());
-                    }
-                    
-                    if(state is SampleProductLoaded) {
-                      return Column(
-                        children: [
-                          const Padding(
-                            padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
-                            child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                Text('Curated For You', style: TextStyle(fontWeight: FontWeight.w500),),
-                                
-                                // TextButton(
-                                //   onPressed: (){
-                                    
-                                //   }, 
-                                //   child: const Text('See All', style: TextStyle(color: darkGreyColor),))
-                              ],
-                            ),
-                          ),
+        body: SingleChildScrollView(
+          child: Column(
+            children: [
+              
+              BlocBuilder<CategoryBloc, CategoryState>(
+                builder: (context, state){
+                  if(state is CategoryError){
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(state.error, textAlign: TextAlign.center,),
                         
-                          MasonryGridView.count(
-                            crossAxisCount: 2,
-                            mainAxisSpacing: 14,
-                            crossAxisSpacing: 16,
-                            padding: const EdgeInsets.symmetric(horizontal: 12),
-                            physics: const NeverScrollableScrollPhysics(),
-                            shrinkWrap: true,
-                            itemCount: state.products.length,
-                            itemBuilder: (context, index) {
-                              return GestureDetector(
-                                onTap: () => context.push('/homepage/product_detail', extra: state.products[index]),
-                                child: ProductCard(currentProduct: state.products[index]));
-                            },
-                          ),
-                          
-                          const SizedBox(height: 10)
+                        const SizedBox(height: 20),
+                        
+                        IconButton(
+                          onPressed: (){
+                            context.read<CategoryBloc>().add(FetchCategories());
+                          }, 
+                          icon: const Icon(Icons.refresh, size: 30,))
                       ],
-                      );
-                    }
-                    return const SizedBox();
-                })
-              ],
-            ),
+                    );
+                  }
+                  
+                  if(state is CategoryLoading){
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  
+                  if(state is CategoryLoaded){
+                    return Column(
+                      children: [
+                        Container(
+                          margin: const EdgeInsets.only(top: 12),
+                          padding: const EdgeInsets.only(left: 20, right: 20, top: 20),
+                          color: primaryColor.withOpacity(.2),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Wrap(
+                                direction: Axis.vertical,
+                                spacing: 12,
+                                children: [
+                                  const Text('NEW COLLECTIONS', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
+                                  
+                                  const Text('20% OFF', style: TextStyle(fontWeight: FontWeight.w500, fontSize: 20),),
+                                  
+                                  TextButton(
+                                    onPressed: (){}, 
+                                    style: TextButton.styleFrom(
+                                      backgroundColor: primaryColor,
+                                      
+                                      padding: const EdgeInsets.symmetric(vertical: 0, horizontal: 8),
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(0)
+                                      )
+                                    ),
+                                    child: const Text('SHOP NOW', style: TextStyle(color: Colors.white),))
+                                ],
+                              ),
+                              
+                              Image.asset('assets/images/calvin_girl.png', width: 130,)
+                            ],
+                          ),
+                        ),
+                        
+                        Padding(
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              const Text('Shop By Category', style: TextStyle(fontWeight: FontWeight.w500),),
+                              
+                              TextButton(
+                                onPressed: (){
+                                  context.push('/categories');
+                                }, 
+                                child: const Text('See All', style: TextStyle(color: darkGreyColor),))
+                            ],
+                          ),
+                        ),
+                        
+                        Container(
+                          height: 35,
+                          padding: const EdgeInsets.symmetric(horizontal: 8),
+                          child: ListView.separated(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: state.categories.length,
+                            separatorBuilder: (context, index) {
+                              return const SizedBox(
+                                width: 12,
+                              );
+                            },
+                            itemBuilder: (context, index){
+                              return TextButton(
+                                onPressed: () => context.push('/categories/products', extra: state.categories[index]), 
+                                style: TextButton.styleFrom(
+                                  backgroundColor: primaryColor.withOpacity(.3),
+                                  shape: RoundedRectangleBorder(
+                                    borderRadius: BorderRadius.circular(25)
+                                  ),
+                                  padding: const EdgeInsets.symmetric(horizontal: 16)
+                                ),
+                                child: Text(state.categories[index], 
+                                  style: const TextStyle(color: Colors.black,  fontWeight: FontWeight.w500)
+                                )
+                              );
+                            }
+                          ),
+                        ),
+                      ],
+                    );
+                  }
+                  
+                  return const SizedBox();
+                } 
+              ),
+                    
+              BlocBuilder<SampleProductBloc, SampleProductState>(
+                builder: (context, state) {
+                  if(state is SampleProductError){
+                    return Column(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(state.error, textAlign: TextAlign.center,),
+                        
+                        const SizedBox(height: 20),
+                        
+                        IconButton(
+                          onPressed: (){
+                            context.read<SampleProductBloc>().add(FetchProducts());
+                          }, 
+                          icon: const Icon(Icons.refresh, size: 30,))
+                      ],
+                    );
+                  }
+                  
+                  if(state is SampleProductLoading){
+                    return const Center(child: CircularProgressIndicator());
+                  }
+                  
+                  if(state is SampleProductLoaded) {
+                    return Column(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.symmetric(horizontal: 8, vertical: 16),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Text('Curated For You', style: TextStyle(fontWeight: FontWeight.w500),),
+                              
+                              // TextButton(
+                              //   onPressed: (){
+                                  
+                              //   }, 
+                              //   child: const Text('See All', style: TextStyle(color: darkGreyColor),))
+                            ],
+                          ),
+                        ),
+                      
+                        MasonryGridView.count(
+                          crossAxisCount: 2,
+                          mainAxisSpacing: 14,
+                          crossAxisSpacing: 16,
+                          padding: const EdgeInsets.symmetric(horizontal: 12),
+                          physics: const NeverScrollableScrollPhysics(),
+                          shrinkWrap: true,
+                          itemCount: state.products.length,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () => context.push('/homepage/product_detail', extra: state.products[index]),
+                              child: ProductCard(currentProduct: state.products[index]));
+                          },
+                        ),
+                        
+                        const SizedBox(height: 10)
+                    ],
+                    );
+                  }
+                  return const SizedBox();
+              })
+            ],
           ),
         )
       ),

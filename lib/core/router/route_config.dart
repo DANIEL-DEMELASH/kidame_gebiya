@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 import 'package:kidame_gebiya/features/category/presentation/pages/category_page.dart';
 import 'package:kidame_gebiya/features/product/data/models/product_model.dart';
+import 'package:kidame_gebiya/features/product/presentation/pages/product_by_category.dart';
 import 'package:kidame_gebiya/features/product/presentation/pages/product_detail.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -40,9 +41,21 @@ class RouteConfig {
           builder: (context, state) => const LoginPage(),
         ),
         
-         GoRoute(
+        GoRoute(
           path: '/categories',
           builder: (context, state) => const CategoryPage(),
+          routes: [
+            GoRoute(
+              path: '/products',
+               builder: (context, state) {
+                final productCategory = state.extra as String?;
+                if(productCategory == null){
+                  return const Scaffold(body: Center(child: Text('Invalid product category'),));
+                }
+                return ProductByCategory(productCategory: productCategory);
+              }
+            )
+          ]
         ),
         
         GoRoute(

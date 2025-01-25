@@ -31,17 +31,22 @@ class ProductDetail extends StatelessWidget {
             Container(
               height: 286,
               width: double.infinity,
-              padding: const EdgeInsets.symmetric(vertical: 16),
+              padding: const EdgeInsets.symmetric(vertical: 8),
               margin: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
-                border: Border.all(color: greyColor),
+                // border: Border.all(color: greyColor),
                 borderRadius: BorderRadius.circular(12)
               ),
-              child: CachedNetworkImage(
-                imageUrl: product.image,
-                fit: BoxFit.fitHeight,
-                placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-                errorWidget: (context, url, error) => Center(child: Text(error.toString()),),
+              child: InteractiveViewer(
+                // boundaryMargin: EdgeInsets.all(20.0),
+                minScale: 0.05,
+                maxScale: 4.0,
+                child: CachedNetworkImage(
+                  imageUrl: product.image,
+                  fit: BoxFit.contain,
+                  placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+                  errorWidget: (context, url, error) => Center(child: Text(error.toString()),),
+                ),
               ),
             ),
             

@@ -51,7 +51,7 @@ class CategoryPage extends StatelessWidget {
               padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
               children: state.categories.map((category){
                 return TextButton(
-                  onPressed: () => context.push('/'),
+                  onPressed: () => context.push('/categories/products', extra: category),
                   style: TextButton.styleFrom(
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(4),
