@@ -6,7 +6,6 @@ import 'package:kidame_gebiya/features/category/bloc/category_bloc.dart';
 import 'package:kidame_gebiya/features/category/bloc/category_event.dart';
 import 'package:kidame_gebiya/features/category/bloc/category_state.dart';
 import 'package:kidame_gebiya/features/home/bloc/sample_product/sample_product_event.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:kidame_gebiya/features/home/bloc/sample_product/sample_product_bloc.dart';
 import 'package:kidame_gebiya/features/home/bloc/sample_product/sample_product_state.dart';
@@ -41,16 +40,6 @@ class HomePage extends StatelessWidget {
             )
           ),
           centerTitle: true,
-          actions: [
-            TextButton(
-              onPressed: () async{
-                SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
-                sharedPreferences.remove('isLoggedIn');
-                if(context.mounted) {
-                  context.go('/login');
-                }
-              }, child: const Text('Logout'))
-          ],
         ),
         
         body: SingleChildScrollView(

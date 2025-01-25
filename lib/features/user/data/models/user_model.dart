@@ -4,19 +4,28 @@ part 'user_model.freezed.dart';
 part 'user_model.g.dart';
 
 @freezed
-class UserModel with _$UserModel {
-  const factory UserModel({
-    required Address address,
+class User with _$User {
+  const factory User({
     required int id,
     required String email,
     required String username,
     required String password,
     required Name name,
+    required Address address,
     required String phone,
-    required int version,
-  }) = _UserModel;
+  }) = _User;
 
-  factory UserModel.fromJson(Map<String, dynamic> json) => _$UserModelFromJson(json);
+  factory User.fromJson(Map<String, dynamic> json) => _$UserFromJson(json);
+}
+
+@freezed
+class Name with _$Name {
+  const factory Name({
+    required String firstname,
+    required String lastname,
+  }) = _Name;
+
+  factory Name.fromJson(Map<String, dynamic> json) => _$NameFromJson(json);
 }
 
 @freezed
@@ -40,14 +49,4 @@ class Geolocation with _$Geolocation {
   }) = _Geolocation;
 
   factory Geolocation.fromJson(Map<String, dynamic> json) => _$GeolocationFromJson(json);
-}
-
-@freezed
-class Name with _$Name {
-  const factory Name({
-    required String firstname,
-    required String lastname,
-  }) = _Name;
-
-  factory Name.fromJson(Map<String, dynamic> json) => _$NameFromJson(json);
 }

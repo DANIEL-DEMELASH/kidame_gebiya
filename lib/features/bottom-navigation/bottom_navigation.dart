@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:kidame_gebiya/app_constant.dart';
 import 'package:kidame_gebiya/features/home/presentation/pages/home_page.dart';
 import 'package:kidame_gebiya/features/product/presentation/pages/products_page.dart';
+import 'package:kidame_gebiya/features/user/presentation/pages/profile_page.dart';
 
 class BottomNavigation extends StatefulWidget {
   const BottomNavigation({super.key});
@@ -16,7 +17,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
     const HomePage(),
     const ProductsPage(),
     const Scaffold(),
-    const Scaffold(),
+    const ProfilePage(),
   ];
 
   @override

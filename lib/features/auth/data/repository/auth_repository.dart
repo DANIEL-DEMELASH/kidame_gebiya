@@ -15,6 +15,7 @@ class AuthRepository {
     if(response.statusCode == 200){
       SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
       sharedPreferences.setString("token", response.data["token"]);
+      sharedPreferences.setString("username", userData["username"]);
       return true;  
     }else{
       throw Exception('unknown error');  
