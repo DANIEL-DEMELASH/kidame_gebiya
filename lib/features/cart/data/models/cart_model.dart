@@ -9,19 +9,18 @@ class CartModel with _$CartModel {
     required int id,
     required int userId,
     required DateTime date,
-    required List<Product> products,
-    required int version,
+    required List<CartProduct> products,
   }) = _CartModel;
 
   factory CartModel.fromJson(Map<String, dynamic> json) => _$CartModelFromJson(json);
 }
 
 @freezed
-class Product with _$Product {
-  const factory Product({
+class CartProduct with _$CartProduct {
+  const factory CartProduct({
     required int productId,
     required int quantity,
-  }) = _Product;
+  }) = _CartProduct;
 
-  factory Product.fromJson(Map<String, dynamic> json) => _$ProductFromJson(json);
+  factory CartProduct.fromJson(Map<String, dynamic> json) => _$CartProductFromJson(json);
 }

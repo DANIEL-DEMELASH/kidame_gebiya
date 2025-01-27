@@ -34,11 +34,9 @@ class ProductDetail extends StatelessWidget {
               padding: const EdgeInsets.symmetric(vertical: 8),
               margin: const EdgeInsets.only(bottom: 20),
               decoration: BoxDecoration(
-                // border: Border.all(color: greyColor),
                 borderRadius: BorderRadius.circular(12)
               ),
               child: InteractiveViewer(
-                // boundaryMargin: EdgeInsets.all(20.0),
                 minScale: 0.05,
                 maxScale: 4.0,
                 child: CachedNetworkImage(

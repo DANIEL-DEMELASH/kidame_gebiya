@@ -1,6 +1,7 @@
 import 'package:get_it/get_it.dart';
 import 'package:kidame_gebiya/core/dio/dio_client.dart';
 import 'package:kidame_gebiya/features/auth/data/repository/auth_repository.dart';
+import 'package:kidame_gebiya/features/cart/data/repository/cart_repository.dart';
 import 'package:kidame_gebiya/features/category/data/repository/category_repository.dart';
 import 'package:kidame_gebiya/features/product/data/repository/product_repository.dart';
 import 'package:kidame_gebiya/features/user/data/repository/user_repository.dart';
@@ -14,4 +15,5 @@ void setupLocator(){
   getIt.registerLazySingleton<ProductRepository>(() => ProductRepository(getIt<DioClient>()));
   getIt.registerLazySingleton<CategoryRepository>(() => CategoryRepository(getIt<DioClient>()));
   getIt.registerLazySingleton<UserRepository>(() => UserRepository(getIt<DioClient>()));
+  getIt.registerLazySingleton<CartRepository>(() => CartRepository(getIt<DioClient>()));
 }

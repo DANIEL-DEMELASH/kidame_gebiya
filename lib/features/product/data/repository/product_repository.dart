@@ -33,5 +33,14 @@ class ProductRepository {
     }
   }
   
-  
+  Future<ProductModel> getProductById(int id) async {
+    final response = await dioClient.client.get("${DioConfig.allProducts}/$id");
+    
+    if(response.statusCode == 200 || response.statusCode == 201){
+      final ProductModel product = ProductModel.fromJson(response.data);
+      return product;
+    }else{
+      throw Exception('Error loading product by id ${response.statusCode} ${response.statusMessage}');
+    }
+  }
 }

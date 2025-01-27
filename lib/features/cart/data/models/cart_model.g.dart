@@ -12,9 +12,8 @@ _$CartModelImpl _$$CartModelImplFromJson(Map<String, dynamic> json) =>
       userId: (json['userId'] as num).toInt(),
       date: DateTime.parse(json['date'] as String),
       products: (json['products'] as List<dynamic>)
-          .map((e) => Product.fromJson(e as Map<String, dynamic>))
+          .map((e) => CartProduct.fromJson(e as Map<String, dynamic>))
           .toList(),
-      version: (json['version'] as num).toInt(),
     );
 
 Map<String, dynamic> _$$CartModelImplToJson(_$CartModelImpl instance) =>
@@ -23,16 +22,15 @@ Map<String, dynamic> _$$CartModelImplToJson(_$CartModelImpl instance) =>
       'userId': instance.userId,
       'date': instance.date.toIso8601String(),
       'products': instance.products,
-      'version': instance.version,
     };
 
-_$ProductImpl _$$ProductImplFromJson(Map<String, dynamic> json) =>
-    _$ProductImpl(
+_$CartProductImpl _$$CartProductImplFromJson(Map<String, dynamic> json) =>
+    _$CartProductImpl(
       productId: (json['productId'] as num).toInt(),
       quantity: (json['quantity'] as num).toInt(),
     );
 
-Map<String, dynamic> _$$ProductImplToJson(_$ProductImpl instance) =>
+Map<String, dynamic> _$$CartProductImplToJson(_$CartProductImpl instance) =>
     <String, dynamic>{
       'productId': instance.productId,
       'quantity': instance.quantity,

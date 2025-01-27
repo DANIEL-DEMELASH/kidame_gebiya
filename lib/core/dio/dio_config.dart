@@ -9,4 +9,5 @@ class DioConfig {
   static const String categories = 'products/categories';
   static const String productByCategory = 'products/category';
   static const String users = 'users';
+  static const String userCarts = 'carts/user';
 }

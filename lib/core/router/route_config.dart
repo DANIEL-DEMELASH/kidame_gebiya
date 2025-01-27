@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
+import 'package:kidame_gebiya/features/cart/data/models/cart_model.dart';
+import 'package:kidame_gebiya/features/cart/presentation/pages/cart_detail.dart';
+import 'package:kidame_gebiya/features/cart/presentation/pages/carts_page.dart';
 import 'package:kidame_gebiya/features/category/presentation/pages/category_page.dart';
 import 'package:kidame_gebiya/features/product/data/models/product_model.dart';
 import 'package:kidame_gebiya/features/product/presentation/pages/product_by_category.dart';
@@ -39,6 +42,20 @@ class RouteConfig {
         GoRoute(
           path: '/login',
           builder: (context, state) => const LoginPage(),
+        ),
+        
+        GoRoute(
+          path: '/carts',
+          builder: (context, state) => const CartsPage(),
+          routes: [
+            GoRoute(
+            path: '/cart_detail',
+            builder: (context, state){
+              final CartModel cartModel = state.extra as CartModel;
+              return CartDetail(cartModel: cartModel);
+            },
+          ),
+          ]
         ),
         
         GoRoute(
