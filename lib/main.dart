@@ -22,7 +22,7 @@ void main() async{
       statusBarColor: Colors.white,
       statusBarBrightness: Brightness.dark,
       statusBarIconBrightness: Brightness.dark,
-      systemNavigationBarColor: Color.fromARGB(255, 0, 52, 83)
+      systemNavigationBarColor: Colors.white
     )
   );
   runApp(

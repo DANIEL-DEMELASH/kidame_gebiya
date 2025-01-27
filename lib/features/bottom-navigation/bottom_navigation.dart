@@ -38,22 +38,22 @@ class _BottomNavigationState extends State<BottomNavigation> {
               tabs: [
                 Tab(
                   text: 'Home',
-                  icon: Icon(FeatherIcons.home, size: 30),
+                  icon: Icon(FeatherIcons.home, size: 25),
                   iconMargin: EdgeInsets.only(bottom: 4),
                 ),
                 Tab(
                   text: 'Explore',
-                  icon: Icon(FeatherIcons.search, size: 30),
+                  icon: Icon(FeatherIcons.search, size: 25),
                   iconMargin: EdgeInsets.only(bottom: 4),
                 ),
                 Tab(
                   text: 'Cart',
-                  icon: Icon(FeatherIcons.shoppingCart, size: 30),
+                  icon: Icon(FeatherIcons.shoppingCart, size: 25),
                   iconMargin: EdgeInsets.only(bottom: 4),
                 ),
                 Tab(
                   text: 'Profile',
-                  icon: Icon(FeatherIcons.user, size: 30),
+                  icon: Icon(FeatherIcons.user, size: 25),
                   iconMargin: EdgeInsets.only(bottom: 4),
                 ),
               ],
