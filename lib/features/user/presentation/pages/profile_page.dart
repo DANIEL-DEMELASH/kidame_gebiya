@@ -171,7 +171,7 @@ class ProfilePage extends StatelessWidget {
                                 ),
                               )
                             ],
-                          ),            
+                          ),
                         ],
                       ),
                     ),
