@@ -18,11 +18,14 @@ class ProductCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start, // Align content to the start
         children: [
-          CachedNetworkImage(
-            imageUrl: currentProduct.image,
-            fit: BoxFit.cover,
-            placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
-            errorWidget: (context, url, error) => Center(child: Text(error.toString()),),
+          Hero(
+            tag: 'location-img${currentProduct.image}',
+            child: CachedNetworkImage(
+              imageUrl: currentProduct.image,
+              fit: BoxFit.cover,
+              placeholder: (context, url) => const Center(child: CircularProgressIndicator()),
+              errorWidget: (context, url, error) => Center(child: Text(error.toString()),),
+            ),
           ),
           
           const SizedBox(height: 18),
