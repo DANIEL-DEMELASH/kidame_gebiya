@@ -1,7 +1,9 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:go_router/go_router.dart';
+
 import 'package:kidame_gebiya/features/product/bloc/all_products/products_bloc.dart';
 import 'package:kidame_gebiya/features/product/bloc/all_products/products_event.dart';
 import 'package:kidame_gebiya/features/product/bloc/all_products/products_state.dart';
@@ -44,7 +46,7 @@ class ProductsPage extends StatelessWidget {
               }
               
               if(state is ProductLoading){
-                return const Center(child: CircularProgressIndicator());
+                return const Center(child: CupertinoActivityIndicator());
               }
               
               if(state is ProductLoaded){

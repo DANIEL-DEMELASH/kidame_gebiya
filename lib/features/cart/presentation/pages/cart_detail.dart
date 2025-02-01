@@ -41,7 +41,7 @@ class CartDetail extends StatelessWidget {
               child: BlocBuilder<ProductByIdBloc, ProductByIdState>(
                 builder: (context, state) { 
                   if(state is ProductByIdLoading){
-                    return const Center(child: CircularProgressIndicator());
+                    return const Center(child: CupertinoActivityIndicator());
                   }
                   
                   if(state is ProductByIdError){

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class LoginButton extends StatelessWidget {
@@ -29,7 +30,7 @@ class LoginButton extends StatelessWidget {
           ),
         ),
         child: isLoading
-            ? const CircularProgressIndicator(color: Colors.white)
+            ? const CupertinoActivityIndicator(color: Colors.white)
             : Text(
                 buttonText,
                 style: TextStyle(

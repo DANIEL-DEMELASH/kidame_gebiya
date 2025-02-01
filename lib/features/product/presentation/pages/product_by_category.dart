@@ -45,7 +45,7 @@ class ProductByCategory extends StatelessWidget {
             }
             
             if(state is ProductByCategoryLoading){
-              return const Center(child: CircularProgressIndicator());
+              return const Center(child: CupertinoActivityIndicator());
             }
             
             if(state is ProductByCategoryLoaded){

@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
@@ -66,7 +67,7 @@ class HomePage extends StatelessWidget {
                   }
                   
                   if(state is CategoryLoading){
-                    return const Center(child: CircularProgressIndicator());
+                    return const Center(child: CupertinoActivityIndicator());
                   }
                   
                   if(state is CategoryLoaded){
@@ -178,7 +179,7 @@ class HomePage extends StatelessWidget {
                   }
                   
                   if(state is SampleProductLoading){
-                    return const Center(child: CircularProgressIndicator());
+                    return const Center(child: CupertinoActivityIndicator());
                   }
                   
                   if(state is SampleProductLoaded) {

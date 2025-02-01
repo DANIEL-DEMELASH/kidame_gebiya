@@ -41,7 +41,7 @@ class CategoryPage extends StatelessWidget {
             );
           }
           if(state is CategoryLoading){
-            return const Center(child: CircularProgressIndicator());
+            return const Center(child: CupertinoActivityIndicator());
           }
           if(state is CategoryLoaded){
             return GridView.count(
