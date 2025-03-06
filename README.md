@@ -1,16 +1,37 @@
-# kidame_gebiya
 
-A new Flutter project.
 
-## Getting Started
+<h3 align="center">Kidame Gebiya</h3>
 
-This project is a starting point for a Flutter application.
 
-A few resources to get you started if this is your first Flutter project:
+<!-- ABOUT THE PROJECT -->
+## About The Project
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+I built an application called ቅዳሜ ገቢያ (Saturday Market), which uses the Fakestore API for data and Bloc state management to ensure efficient functionality.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+
+### Built With
+
+* [Flutter](https://flutter.dev/)
+* [FakeStore API](https://fakestoreapi.com/)
+* [Bloc State Managemtnt](https://pub.dev/packages/flutter_bloc)
+
+
+### Prerequisites
+
+* Flutter Sdk
+* Dart Sdk
+
+### Installation
+
+1. Clone the repo
+   ```sh
+   git clone https://github.com/DANIEL-DEMELASH/kidame_gebiya.git
+   ```
+2. Install pubspec.yaml packages
+   ```sh
+   flutter pub get
+   ```
+3. Run `main.dart`
+   ```sh
+   flutter run';
+   ```
