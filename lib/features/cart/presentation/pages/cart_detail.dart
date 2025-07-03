@@ -130,46 +130,47 @@ class CartDetail extends StatelessWidget {
           );
       }),
       
-      bottomSheet: Container(
-        height: 60,
-        padding: const EdgeInsets.symmetric(horizontal: 12),
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.zero
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Checkbox(
-                  value: false,
-                  onChanged: (value){
-                    
-                  }
-                ),
-                
-                const Text('Select All', style: TextStyle(color: darkGreyColor),),
-              ],
-            ),
-            
-            const Text('Total \$22.3', style: TextStyle(fontWeight: FontWeight.w500),),
-            
-            
-            SizedBox(
-              width: MediaQuery.sizeOf(context).width * .35,
-              child: TextButton(
-                onPressed: (){}, 
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 12),
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.zero
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Checkbox(
+                    value: false,
+                    onChanged: (value){
+                      
+                    }
                   ),
-                  backgroundColor: primaryColor,
-                  padding: const EdgeInsets.symmetric(vertical: 12)
-                ),
-                child: const Text('Checkout', style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white),)),
-            ),
-          ],
+                  
+                  const Text('Select All', style: TextStyle(color: darkGreyColor),),
+                ],
+              ),
+              
+              const Text('Total \$22.3', style: TextStyle(fontWeight: FontWeight.w500),),
+              
+              
+              SizedBox(
+                width: MediaQuery.sizeOf(context).width * .35,
+                child: TextButton(
+                  onPressed: (){}, 
+                  style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)
+                    ),
+                    backgroundColor: primaryColor,
+                    padding: const EdgeInsets.symmetric(vertical: 12)
+                  ),
+                  child: const Text('Checkout', style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white),)),
+              ),
+            ],
+          ),
         ),
       )
     );

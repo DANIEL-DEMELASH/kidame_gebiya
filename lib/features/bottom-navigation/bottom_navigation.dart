@@ -26,13 +26,14 @@ class _BottomNavigationState extends State<BottomNavigation> {
     return DefaultTabController(
       length: _screens.length,
       child: Scaffold(
-          backgroundColor: Colors.white,
-          body: TabBarView(
-            physics: const NeverScrollableScrollPhysics(),
-            children: _screens,
-          ),
-          bottomNavigationBar: Container(
-            height: 58,
+        backgroundColor: Colors.white,
+        body: TabBarView(
+          physics: const NeverScrollableScrollPhysics(),
+          children: _screens,
+        ),
+        bottomNavigationBar: SafeArea(
+          child: Container(
+            height: 55,
             padding: const EdgeInsets.only(top: 4),
             child: const TabBar(
               tabs: [
@@ -58,6 +59,8 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 ),
               ],
               indicator: BoxDecoration(),
+              indicatorColor: Colors.transparent,
+              dividerColor: Colors.transparent,
               unselectedLabelStyle: TextStyle(
                   color: darkGreyColor, 
                   fontFamily: 'Poppins',
@@ -69,7 +72,9 @@ class _BottomNavigationState extends State<BottomNavigation> {
                   fontWeight: FontWeight.w500,
                   fontSize: 12),
             ),
-          )),
+          ),
+        )
+      ),
     );
   }
 }
