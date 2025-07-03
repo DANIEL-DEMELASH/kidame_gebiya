@@ -138,54 +138,55 @@ class ProductDetail extends StatelessWidget {
         ),
       ),
       
-      bottomSheet: Container(
-        height: 60,
-        padding: const EdgeInsets.symmetric(horizontal: 25),
-        decoration: const BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.zero
-        ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Expanded(
-              child: TextButton(
-                onPressed: (){}, 
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)
+      bottomNavigationBar: SafeArea(
+        child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 25),
+          decoration: const BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.zero
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Expanded(
+                child: TextButton(
+                  onPressed: (){}, 
+                  style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)
+                    ),
+                    side: const BorderSide(
+                      color: primaryColor
+                    ),
+                    padding: const EdgeInsets.symmetric(vertical: 12)
                   ),
-                  side: const BorderSide(
-                    color: primaryColor
-                  ),
-                  padding: const EdgeInsets.symmetric(vertical: 12)
+                  child: const Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(FeatherIcons.shoppingBag, color: primaryColor, size: 18,),
+                      SizedBox(width: 8),
+                      Text('Add to cart', style: TextStyle(fontWeight: FontWeight.w500, color: primaryColor),),
+                    ],
+                  )
                 ),
-                child: const Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Icon(FeatherIcons.shoppingBag, color: primaryColor, size: 18,),
-                    SizedBox(width: 8),
-                    Text('Add to cart', style: TextStyle(fontWeight: FontWeight.w500, color: primaryColor),),
-                  ],
-                )
               ),
-            ),
-            
-            const SizedBox(width: 16),
-            
-            Expanded(
-              child: TextButton(
-                onPressed: (){}, 
-                style: TextButton.styleFrom(
-                  shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(12)
+              
+              const SizedBox(width: 16),
+              
+              Expanded(
+                child: TextButton(
+                  onPressed: (){}, 
+                  style: TextButton.styleFrom(
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12)
+                    ),
+                    backgroundColor: primaryColor,
+                    padding: const EdgeInsets.symmetric(vertical: 12)
                   ),
-                  backgroundColor: primaryColor,
-                  padding: const EdgeInsets.symmetric(vertical: 12)
-                ),
-                child: const Text('Checkout', style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white),)),
-            ),
-          ],
+                  child: const Text('Checkout', style: TextStyle(fontWeight: FontWeight.w500, color: Colors.white),)),
+              ),
+            ],
+          ),
         ),
       ),
     );

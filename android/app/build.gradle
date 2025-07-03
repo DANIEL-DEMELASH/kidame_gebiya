@@ -8,7 +8,7 @@ plugins {
 android {
     namespace = "com.example.kidame_gebiya"
     compileSdk = flutter.compileSdkVersion
-    ndkVersion = flutter.ndkVersion
+    ndkVersion = "27.2"
 
     compileOptions {
         sourceCompatibility = JavaVersion.VERSION_17
